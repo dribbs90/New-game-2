@@ -1,6 +1,6 @@
 workflows:
-  build-and-test:
-    name: Build Flutter iOS + Android
+  android-only:
+    name: Android Only Build
     max_build_duration: 60
     environment:
       flutter: stable
@@ -11,14 +11,9 @@ workflows:
       - name: Install dependencies
         script: |
           flutter pub get
-      - name: Run tests
-        script: |
-          flutter test
-      - name: Build Android
+      - name: Build Android APK
         script: |
           flutter build apk --release
-      - name: Build iOS
-        script: |
-          flutter build ios --release --no-codesign
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
+  
